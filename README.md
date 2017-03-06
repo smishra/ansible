@@ -12,8 +12,8 @@ Replace the **\<SSH_USER\>** by the user that will be used to ssh to remote mach
 
 #### Modify tomcat.inventory
 
-Replace the **IP_ADDRESS** by the IP Address of the host on which you want to install tomcat
-Replace the **SSH_PWD** by the password of SSH user.
+Replace the **\<IP_ADDRESS\>** by the IP Address of the host on which you want to install tomcat
+Replace the **\<SSH_PWD\>** by the password of SSH user.
 
 
 
