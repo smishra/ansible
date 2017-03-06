@@ -4,7 +4,7 @@
 The role tomcat defined under roles directory is for CentOS 7+ and Tomcat major version 8 and minor version 8.0.41. To change the version of tomcat please modify the respective values in **roles/tomcat/defaults/main.yml**.  
 
 ### To test
-Before you can test by running test_tomcat.sh you will have to modify following
+Before you can test by running *test_tomcat.sh* you will have to modify following
 
 #### Modifiy ansible.cfg
 
