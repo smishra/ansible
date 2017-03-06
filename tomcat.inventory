@@ -1,0 +1,2 @@
+[tomcat-nodes]
+tomcat-node-1 ansible_ssh_host=<IP_ADDRESS> ansible_ssh_pass=REMOTE_USER_PWD

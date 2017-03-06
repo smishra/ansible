@@ -1,0 +1,5 @@
+---
+- name: restart tomcat
+  command: systemctl restart tomcat.service
+  become: True
+

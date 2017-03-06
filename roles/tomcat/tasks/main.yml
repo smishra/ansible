@@ -1,0 +1,47 @@
+- name: create tomcat user
+  user:
+    name: tomcat
+    createhome: no
+
+- name: create tomcat base directory
+  file: path=/opt/tomcat/{{ item }} state=directory recurse=yes owner=tomcat group=tomcat
+  with_items:
+    - bin
+    - conf
+    - logs
+    - temp
+    - webapps
+    - work
+
+- name: download tomcat tar
+  get_url:
+    url: http://www-us.apache.org/dist/tomcat/tomcat-{{ major_version }}/v{{ minor_version }}/bin/apache-tomcat-{{ minor_version }}.tar.gz
+    dest: /opt/tomcat/temp
+  become_user: tomcat
+
+- name: extract tomcat tar
+  command: tar -zxvf /opt/tomcat/temp/apache-tomcat-{{ minor_version }}.tar.gz -C /opt/tomcat --strip-components=1
+  become_user: tomcat
+
+- name: copy tomcat service template
+  template: src=tomcat.service.j2 dest=/etc/systemd/system/tomcat.service
+  notify: restart tomcat
+
+- name: start the tomcat service if not running
+  command: systemctl start tomcat.service
+  become: true
+
+- name: enable tomcat service
+  command: systemctl enable tomcat.service
+  become: true
+
+- name: open port 8080
+  command: firewall-cmd --zone=public --permanent --add-port=8080/tcp
+  become: true
+
+- name: reload firewall
+  command: firewall-cmd --reload
+  become: true
+
+
+

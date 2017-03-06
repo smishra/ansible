@@ -1,0 +1,9 @@
+- name: Install tomcat
+  hosts: tomcat-nodes
+  remote_user: admin
+  become: true
+  roles:
+    - role: tomcat
+  post_tasks:
+    - debug:
+        msg: "Tomcat installed. Point your browser to http://{{ ansible_all_ipv4_addresses|last }}:8080 to check"

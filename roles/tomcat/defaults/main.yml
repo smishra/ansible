@@ -1,0 +1,6 @@
+major_version: 8
+minor_version: 8.5.11
+tomcat_user: tomcat
+tomcat_group: tomcat
+jvm_ms: Xms1024M
+jvm_mx: Xmx1024M
